@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+#define NUM_CARTAS 2
+
+// Estrutura para armazenar os dados de uma carta
+typedef struct {
+    char estado;
+    char codigo[4];  // Ex: "A01"
+    char cidade[50]; // Nome da cidade
+    int populacao;
+    float area;
+    float pib;
+    int pontosTuristicos;
+} CartaSuperTrunfo;
+
+void imprimirCarta(CartaSuperTrunfo carta) {
+    printf("\n--- Carta Super Trunfo ---\n");
+    printf("Estado: %c\n", carta.estado);
+    printf("Código da Carta: %s\n", carta.codigo);
+    printf("Nome da Cidade: %s\n", carta.cidade);
+    printf("População: %d habitantes\n", carta.populacao);
+    printf("Área: %.2f km²\n", carta.area);
+    printf("PIB: %.2f bilhões\n", carta.pib);
+    printf("Pontos Turísticos: %d\n", carta.pontosTuristicos);
+}
+
+int main() {
+    CartaSuperTrunfo cartas[NUM_CARTAS];
+
+    // Entrada dos dados das cartas
+    for (int i = 0; i < NUM_CARTAS; i++) {
+        printf("\nInserindo dados da carta %d:\n", i + 1);
+        printf("Estado (A-H): ");
+        scanf(" %c", &cartas[i].estado);
+
+        printf("Código da Carta (ex: A01): ");
+        scanf("%s", cartas[i].codigo);
+
+        printf("Nome da Cidade: ");
+        scanf(" %[^\n]s", cartas[i].cidade);
+
+        printf("População: ");
+        scanf("%d", &cartas[i].populacao);
+
+        printf("Área (km²): ");
+        scanf("%f", &cartas[i].area);
+
+        printf("PIB (bilhões): ");
+        scanf("%f", &cartas[i].pib);
+
+        printf("Número de Pontos Turísticos: ");
+        scanf("%d", &cartas[i].pontosTuristicos);
+    }
+
+    // Exibir as cartas cadastradas
+    for (int i = 0; i < NUM_CARTAS; i++) {
+        imprimirCarta(cartas[i]);
+    }
+
+    return 0;
+}
